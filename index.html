@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The web sucks.</title>
+    <script src="./script.js" async></script>
+    <style>
+        :root {
+            --bg: #111;
+            --text: #eee;
+        }
+        * {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-size: 20px;
+            max-width: 1024px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        p {
+            margin-top: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        ::backdrop {
+            background: #111;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+        }
+
+        #video-wrapper {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+        }
+
+        #paywall-content {
+            position: relative;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        #paywall-content:before {
+            content: '';
+            position: absolute;
+            top: -400px;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(0, var(--bg), transparent);
+        }
+
+        .review {
+            border: 1px solid #ccc;
+            padding: 1rem 1rem 0;
+            margin-bottom: 1rem;
+        }
+        .user {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="content" class="hidden">
+        <h1>Navigating the Digital Abyss:<br> Unraveling the Mysteries of Why the Web Sucks.</h1>
+        <article>
+            <p>In the vast and interconnected realm of the World Wide Web, where information flows like a digital river and communication spans across continents in the blink of an eye, one can't help but marvel at the sheer magnitude of human achievement. However, as we embark on this journey through the virtual landscape, it becomes increasingly apparent that the web, despite its remarkable capabilities, harbors a darker side—an underbelly of frustrations, inefficiencies, and outright absurdities that leave many users questioning the very essence of their online experiences.</p>
+            <p>Join us on an exploratory venture as we delve into the enigmatic realm of the web, peeling back the layers to expose the subtle intricacies and not-so-subtle annoyances that collectively contribute to the resounding sentiment that, perhaps, the web sucks. Brace yourselves for a rollercoaster ride of revelations and realizations, as we dissect the digital landscape and shed light on the perplexing aspects that often leave us scratching our heads.</p>
+            <p>But before we embark on this odyssey, it's crucial to acknowledge the paradox that lies at the heart of our fascination with the web. We find ourselves entangled in a love-hate relationship, enamored by the convenience it brings while simultaneously wrestling with the pitfalls that threaten to tarnish the overall experience. It's a precarious balance, and as we navigate this precarious terrain, we'll uncover the myriad ways in which the web's shortcomings manifest—ranging from the trivial and mundane to the outright infuriating.</p>
+            <p>From the perplexing design choices of popular websites to the seemingly arbitrary algorithms that dictate what we see and when, our journey will unravel the intricate tapestry of grievances that users often encounter. Through anecdotes, case studies, and a healthy dose of humor, we'll shed light on the peculiarities that make the web a source of both bewilderment and exasperation.</p>
+            <p>But fear not, dear reader, for this exploration is not intended to be a mere exercise in cynicism. Instead, it serves as a call to action, a plea for improvement, and a challenge to collectively envision a web that transcends its current limitations. So, fasten your seatbelts, open a new tab (or close a few), and join us on this expedition into the heart of the digital abyss—where we confront the question of why the web sucks head-on and, in doing so, seek to pave the way for a more harmonious online future.</p>
+        </article>
+        <div id="paywall-content">
+            <h2>Subscribe to read the rest of the article</h2>
+            <p>Get access to exclusive articles, in-depth analysis, and more by subscribing today! Starting from $5.00 per day.</p>
+            <!-- Add a subscription form or link to a payment gateway here -->
+            <button onclick="alert('WHY WOULD YOU CLICK ME?')">Subscribe Now</button>
+        </div>
+        <figure id="video-wrapper">
+            <video loop id="video">
+                <source src="./video.mp4" type="video/mp4">
+            </video>
+            <p>This video is 30MB</p>
+        </figure>
+        <h2>Definitely real reviews</h2>
+        <div class="review">
+            <span class="user">John Doe</span>
+            <span class="date">January 15, 2024</span>
+            <p>This website is fantastic! The user interface is clean and intuitive, and the content is incredibly helpful. I've learned a lot and would highly recommend it to others.</p>
+        </div>
+        <div class="review">
+            <span class="user">Jane Smith</span>
+            <span class="date">January 20, 2024</span>
+            <p>I've been using this website for a while now, and it has become my go-to resource. The community support is excellent, and the tutorials are easy to follow. Thumbs up!</p>
+        </div>
+        <div class="review">
+            <span class="user">Sam Johnson</span>
+            <span class="date">January 22, 2024</span>
+            <p>The features on this website are exactly what I needed for my project. The responsive design is a big plus, and the support team is responsive and helpful. Great job!</p>
+        </div>
+        <div class="review">
+            <span class="user">Sam Johnson again?</span>
+            <span class="date">January 22, 2024</span>
+            <p>This website is a game-changer! The step-by-step tutorials made it so easy for me to learn and implement new skills. Thanks a million!</p>
+        </div>
+    </section>
+    <section id="js-warning">
+        <h1>JavaScript is disabled.</h1>
+        <p>Enable JavaScript to view this page.</p>
+    </section>
+    <dialog id="cookie-dialog">
+        <p>This website doesn't use cookies, but we have a banner anyway.</p>
+        <form method="dialog" >
+            <button onclick="playVideo();showModal('privacy-dialog')">Accept nothing?</button>
+        </form>
+    </dialog>
+    <dialog id="privacy-dialog">
+        <header>
+            <h1>Privacy Policy</h1>
+        </header>
+        <section>
+            <h2>Introduction</h2>
+            <p>This Privacy Policy governs the manner in which [Your Company] collects, uses, maintains, and discloses information collected from users (each, a "User") of the [Your Website] website ("Site").</p>
+        </section>
+        <section>
+            <h2>Information We Collect</h2>
+            <p>We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, register on the site, fill out a form, and in connection with other activities, services, features, or resources we make available on our Site.</p>
+            <p>Users may be asked for, as appropriate, name, email address, mailing address, phone number, and other relevant information.</p>
+        </section>
+        <section>
+            <h2>How We Use Collected Information</h2>
+            <p>[Your Company] may collect and use Users personal information for the following purposes:</p>
+            <ul>
+                <li>To personalize user experience</li>
+                <li>To improve our Site</li>
+                <li>To send periodic emails</li>
+            </ul>
+        </section>
+        <section>
+            <h2>How We Protect Your Information</h2>
+            <p>We adopt appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information, username, password, transaction information, and data stored on our Site.</p>
+        </section>
+        <section>
+            <h2>Changes to This Privacy Policy</h2>
+            <p>[Your Company] has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this privacy policy periodically and become aware of modifications.</p>
+        </section>
+        <section>
+            <h2>Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at [Your Contact Information].</p>
+        </section>
+        <footer>
+            <p>This document was last updated on [Date].</p>
+        </footer>
+        <form method="dialog">
+            <button onclick="showModal('app-dialog')">Accept and I definitely did not read this.</button>
+        </form>
+    </dialog>
+    <dialog id="app-dialog">
+        <p>Download our app so we can track you better.</p>
+        <form method="dialog">
+            <button onclick="showModal('newsletter-dialog')">No?</button>
+        </form>
+    </dialog>
+    <dialog id="newsletter-dialog">
+        <p>Join our newsletter even though you have no idea why you would want that.</p>
+        <form method="dialog">
+            <button>No?</button>
+        </form>
+    </dialog>
+</body>
+</html>

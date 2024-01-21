@@ -24,7 +24,10 @@ function playVideo() {
 function showModal(id) {
   setTimeout(() => {
     document.getElementById(id).showModal()
-    document.getElementById(id).scroll({top: 0})
+    // scroll to top if needed
+    setTimeout(() => {
+      document.getElementById(id).scroll({top: 0})
+    }, 0)
     // don't allow closing of modal
     document.getElementById(id).addEventListener('cancel', (event) => {
       event.preventDefault()

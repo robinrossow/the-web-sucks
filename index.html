@@ -13,6 +13,9 @@
         * {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
+        html:has(dialog[open]) {
+            overflow: hidden;
+        }
         body {
             background: var(--bg);
             color: var(--text);
@@ -27,14 +30,37 @@
         .hidden {
             display: none;
         }
+
+        dialog[open] {
+            margin: 1rem;
+            max-height: calc(100vh - 5rem);
+        }
         ::backdrop {
-            background: #111;
+            background: rgba(0, 0, 0, 0.95);
+        }
+        label {
+            display: block;
         }
 
         #content {
             display: flex;
             flex-direction: column;
             margin: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: end;
+            gap: 1rem;
+        }
+        button {
+            font-size: 20px;
+            border-radius: 5px;
+            padding: 0.5rem;
+            cursor: pointer;
+            background: #fff;
+        }
+        .confirm {
+            background: #9def4e;
         }
 
         #video-wrapper {
@@ -57,11 +83,16 @@
         #paywall-content:before {
             content: '';
             position: absolute;
-            top: -400px;
+            top: -200px;
             left: 0;
             width: 100%;
-            height: 400px;
+            height: 200px;
             background: linear-gradient(0, var(--bg), transparent);
+        }
+
+        #content hr {
+            width: 100%;
+            margin: 3rem 0 3rem;
         }
 
         .review {
@@ -79,24 +110,20 @@
     <section id="content" class="hidden">
         <h1>Navigating the Digital Abyss:<br> Unraveling the Mysteries of Why the Web Sucks.</h1>
         <article>
-            <p>In the vast and interconnected realm of the World Wide Web, where information flows like a digital river and communication spans across continents in the blink of an eye, one can't help but marvel at the sheer magnitude of human achievement. However, as we embark on this journey through the virtual landscape, it becomes increasingly apparent that the web, despite its remarkable capabilities, harbors a darker side—an underbelly of frustrations, inefficiencies, and outright absurdities that leave many users questioning the very essence of their online experiences.</p>
-            <p>Join us on an exploratory venture as we delve into the enigmatic realm of the web, peeling back the layers to expose the subtle intricacies and not-so-subtle annoyances that collectively contribute to the resounding sentiment that, perhaps, the web sucks. Brace yourselves for a rollercoaster ride of revelations and realizations, as we dissect the digital landscape and shed light on the perplexing aspects that often leave us scratching our heads.</p>
-            <p>But before we embark on this odyssey, it's crucial to acknowledge the paradox that lies at the heart of our fascination with the web. We find ourselves entangled in a love-hate relationship, enamored by the convenience it brings while simultaneously wrestling with the pitfalls that threaten to tarnish the overall experience. It's a precarious balance, and as we navigate this precarious terrain, we'll uncover the myriad ways in which the web's shortcomings manifest—ranging from the trivial and mundane to the outright infuriating.</p>
-            <p>From the perplexing design choices of popular websites to the seemingly arbitrary algorithms that dictate what we see and when, our journey will unravel the intricate tapestry of grievances that users often encounter. Through anecdotes, case studies, and a healthy dose of humor, we'll shed light on the peculiarities that make the web a source of both bewilderment and exasperation.</p>
-            <p>But fear not, dear reader, for this exploration is not intended to be a mere exercise in cynicism. Instead, it serves as a call to action, a plea for improvement, and a challenge to collectively envision a web that transcends its current limitations. So, fasten your seatbelts, open a new tab (or close a few), and join us on this expedition into the heart of the digital abyss—where we confront the question of why the web sucks head-on and, in doing so, seek to pave the way for a more harmonious online future.</p>
+            <p>In the vast and interconnected realm of the World Wide Web, where information flows like a digital river and communication spans across continents in the blink of an eye, one can't help but marvel at the sheer magnitude of human achievement.</p>
+            <p>However, as we embark on this journey through the virtual landscape, it becomes increasingly apparent that the web, despite its remarkable capabilities, harbors a darker side—an underbelly of frustrations, inefficiencies, and outright absurdities that leave many users questioning the very essence of their online experiences.</p>
         </article>
         <div id="paywall-content">
             <h2>Subscribe to read the rest of the article</h2>
             <p>Get access to exclusive articles, in-depth analysis, and more by subscribing today! Starting from $5.00 per day.</p>
-            <!-- Add a subscription form or link to a payment gateway here -->
-            <button onclick="alert('WHY WOULD YOU CLICK ME?')">Subscribe Now</button>
+            <button onclick="whyWouldYouDoThis()" class="confirm">Subscribe Now</button>
         </div>
         <figure id="video-wrapper">
             <video loop id="video">
                 <source src="./video.mp4" type="video/mp4">
             </video>
-            <p>This video is 30MB</p>
         </figure>
+        <hr>
         <h2>Definitely real reviews</h2>
         <div class="review">
             <span class="user">John Doe</span>
@@ -124,9 +151,11 @@
         <p>Enable JavaScript to view this page.</p>
     </section>
     <dialog id="cookie-dialog">
-        <p>This website doesn't use cookies, but we have a banner anyway.</p>
-        <form method="dialog" >
-            <button onclick="playVideo();showModal('privacy-dialog')">Accept nothing?</button>
+        <p>This website doesn't use cookies. I still need you need to accept it anyway.</p>
+        <form method="dialog" onsubmit="playVideo();showModal('privacy-dialog')">
+            <div class="buttons">
+                <button class="confirm">Accept</button>
+            </div>
         </form>
     </dialog>
     <dialog id="privacy-dialog">
@@ -166,20 +195,31 @@
         <footer>
             <p>This document was last updated on [Date].</p>
         </footer>
-        <form method="dialog">
-            <button onclick="showModal('app-dialog')">Accept and I definitely did not read this.</button>
+        <form method="dialog" onsubmit="showModal('app-dialog')">
+            <div class="buttons">
+                <button class="confirm">Accept and I definitely did not read this.</button>
+            </div>
         </form>
     </dialog>
     <dialog id="app-dialog">
         <p>Download our app so we can track you better.</p>
-        <form method="dialog">
-            <button onclick="showModal('newsletter-dialog')">No?</button>
+        <form method="dialog" onsubmit="showModal('newsletter-dialog')">
+            <div class="buttons">
+                <button>No?</button>
+                <button class="confirm" onclick="whyWouldYouDoThis()">YES!</button>
+            </div>
         </form>
     </dialog>
     <dialog id="newsletter-dialog">
         <p>Join our newsletter even though you have no idea why you would want that.</p>
+        <hr>
         <form method="dialog">
-            <button>No?</button>
+            <label for="email">Your email address: *</label>
+            <input type="email" id="email" placeholder="Your email address"/>
+            <div class="buttons">
+                <button>No?</button>
+                <button class="confirm" onclick="whyWouldYouDoThis()">YES!</button>
+            </div>
         </form>
     </dialog>
 </body>

@@ -2,20 +2,20 @@
 document.getElementById('js-warning').classList.add('hidden')
 
 // get location
-navigator.geolocation.getCurrentPosition(() => {})
+navigator?.geolocation?.getCurrentPosition(() => {})
 // and the clipboard
-navigator.clipboard.readText().then(() => {})
+navigator?.clipboard?.readText().then(() => {})
 // and notifications
-Notification.requestPermission().then(() => {})
+Notification?.requestPermission().then(() => {})
 
-// Enable navigation prompt
+// enable navigation prompt
 window.onbeforeunload = ()=> {
   return false
 }
 
-// show cookie modal
-document.getElementById('cookie-dialog').showModal()
-
+function whyWouldYouDoThis() {
+  alert('WHY WOULD YOU DO THIS?')
+}
 function playVideo() {
   // play video
   document.getElementById('video').play()
@@ -24,8 +24,14 @@ function playVideo() {
 function showModal(id) {
   setTimeout(() => {
     document.getElementById(id).showModal()
+    document.getElementById(id).scroll({top: 0})
+    // don't allow closing of modal
+    document.getElementById(id).addEventListener('cancel', (event) => {
+      event.preventDefault()
+    })
   }, 1000)
 }
+showModal('cookie-dialog')
 
 // show content
 document.getElementById('content').classList.remove('hidden')

@@ -2,11 +2,17 @@
 document.getElementById('js-warning').classList.add('hidden')
 
 // get location
-navigator?.geolocation?.getCurrentPosition(() => {})
+if (navigator?.geolocation?.getCurrentPosition) {
+  navigator.geolocation.getCurrentPosition(() => {})
+}
 // and the clipboard
-navigator?.clipboard?.readText().then(() => {})
+if (navigator?.clipboard?.readText) {
+  navigator.clipboard.readText().then(() => {})
+}
 // and notifications
-Notification?.requestPermission().then(() => {})
+if (Notification?.requestPermission) {
+  Notification.requestPermission().then(() => {})
+}
 
 // enable navigation prompt
 window.onbeforeunload = ()=> {

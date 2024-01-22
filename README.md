@@ -5,7 +5,7 @@ https://robinrossow.github.io/the-web-sucks/
 
 ## "Features" so far
 - Only works with javascript enabled
-- Autoplaying, non-stoppable video once you start interacting with the website
+- Autoplaying video once you start interacting with the website
 - Fake reviews
 - Paywall
 - ChatGPT generated nonsense
